@@ -9,7 +9,8 @@ class App extends React.Component {
 
   state = {
     poems : [],
-    showForm : false
+    showForm : false,
+    favoritePoems : []
   }
 
   componentDidMount() {
@@ -45,6 +46,17 @@ class App extends React.Component {
   }))
   }
 
+  likePoem = (id) => {
+    this.setState({
+      favoritePoems : [...this.state.favoritePoems, id]
+    })
+  }
+
+  showFavoritePoems = () => {
+    // return this.state.favoritePoems.map(pid => this.state.poems.find(p => p.id === pid))
+    return this.state.poems.filter(poem => this.state.favoritePoems.includes(poem.id))
+  }
+
   render() {
     return (
       <div className="app">
@@ -53,7 +65,8 @@ class App extends React.Component {
           {this.state.showForm === true ? <NewPoemForm addNewPoem={this.addNewPoem}/> : false}
           {/* {false && <NewPoemForm />} */}
         </div> 
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} handleLikeClick={this.likePoem}/>
+        <PoemsContainer poems={this.showFavoritePoems()} handleLikeClick={this.likePoem}/>
       </div>
     );
   }

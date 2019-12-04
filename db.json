@@ -29,6 +29,12 @@
       "author": "michael",
       "content": "this is no masterpiece",
       "id": 5
+    },
+    {
+      "title": "Never Tell Me The Odds!",
+      "author": "Han Solo",
+      "content": "thats no moon",
+      "id": 6
     }
   ]
 }

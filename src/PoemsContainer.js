@@ -6,7 +6,7 @@ class PoemsContainer extends React.Component {
     return (
       <div className="poems-container">
         {
-          this.props.poems.map(poem => <Poem {...poem} />)
+          this.props.poems.map(poem => <Poem {...poem} clickHandler={() =>this.props.handleLikeClick(poem.id)}/>)
         }
       </div>
     );
